@@ -17,6 +17,8 @@ recognition.interimResults = true;
 
 
 /* ====== Functions ====== */
+// TODO:
+// API additions or local effects based on voice commands
 
 function get_speech(e) {
     let words = Array.from( e.results )
