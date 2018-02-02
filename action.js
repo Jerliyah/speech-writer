@@ -10,14 +10,17 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 var recognition = new SpeechRecognition();
 recognition.interimResults = true;
-// recognition.start()
+recognition.start()
 
-// console.log(recognition)
+recognition.addEventListener('results', (e) => { console.log(e) })
 
 
 
 
 /* ====== Functions ====== */
+
+p = document.createElement('p');
+ctn.appendChild(p)
 
 
 
