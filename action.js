@@ -10,18 +10,38 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 var recognition = new SpeechRecognition();
 recognition.interimResults = true;
-recognition.start()
 
-recognition.addEventListener('results', (e) => { console.log(e) })
+
 
 
 
 
 /* ====== Functions ====== */
 
-p = document.createElement('p');
-ctn.appendChild(p)
+function get_speech(e) {
+    let words = Array.from( e.results )
+                .map( result => result[0])
+                .map( result => result.transcript )
+                .join('')
+    
+    if( e.results[0].isFinal ) {
+        show_speech(words)
+    }
+    
+}
+
+function show_speech(text) {
+
+    let p = document.createElement('p');
+    p.innerText = text;
+    ctn.appendChild(p)
+
+}
 
 
 
 /* ====== Events ====== */
+recognition.start()
+recognition.addEventListener('result', get_speech)
+recognition.addEventListener('end', recognition.start)
+
